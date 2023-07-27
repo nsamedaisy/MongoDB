@@ -45,9 +45,10 @@ router.delete("/:id", function (req, res) {
 });
 
 //UPDATE student by id
-router.post("/:id", function (req, res, next) {
-  let student = req.body.body;
-  Student.findByIdAndUpdate(student, { where: { id: req.params.id } })
+router.post("/:id", async function (req, res) {
+  let id = req.params.id
+  let student = req.body.student;
+  await Student.findByIdAndUpdate(id, student)
     .exec()
     .then((resp) => respHandler(res, resp))
     .catch((err) => errorHandler(res, err));
