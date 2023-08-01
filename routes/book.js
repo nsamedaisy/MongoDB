@@ -45,7 +45,7 @@ router.post("/", function (req, res, next) {
 
 // POST/UPDATE book by id
 router.post("/:id", async function (req, res) {
-  let id = req.params.id
+  let id = req.params.id;
   let book = req.body.book;
   await Book.findByIdAndUpdate(id, book)
     .exec()
